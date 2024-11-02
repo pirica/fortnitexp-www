@@ -35,7 +35,7 @@ var myChart = new Chart(ctx, {
         display: true,
         scaleLabel: {
           display: true,
-          labelString: 'Days Through Chapter 2 Remix',
+          labelString: 'Days Through Fortnite: Remix',
         },
       }],
       yAxes: [{
