@@ -16,8 +16,8 @@ var seasonStart = new Date("11/02/2024");
 var seasonEnd = new Date("12/01/2024");
 var daysRemaining = Math.ceil( (seasonEnd.getTime() - today.getTime()) / (1000 * 3600 * 24) );
 var daysTotal = Math.ceil( (seasonEnd.getTime() - seasonStart.getTime()) / (1000 * 3600 * 24) );
-var xp100PerDay = totalPerLevel[51]/daysTotal;
-var xp200PerDay = totalPerLevel[64]/daysTotal;
+var xp100PerDay = totalPerLevel[50]/daysTotal;
+var xp200PerDay = totalPerLevel[70]/daysTotal;
 
 function populateSummary() {
 
@@ -26,12 +26,12 @@ function populateSummary() {
   $("#summary").append("<span class=\"text-danger\">" + daysRemaining + "</span>/" + daysTotal + " Days Remaining. We\'re " + percentage + "% there.");
     
   $("#100card .card-body").append("<p class=\"card-text text-center\">" +
-    numberWithCommas(totalPerLevel[51]) + " XP Total." +
+    numberWithCommas(totalPerLevel[50]) + " XP Total." +
     "<br/>" +
     numberWithCommas(Math.ceil(xp100PerDay)) + " XP/day." +
     "</p>");
     $("#200card .card-body").append("<p class=\"card-text text-center\">" +
-    numberWithCommas(totalPerLevel[64]) + " XP Total." +
+    numberWithCommas(totalPerLevel[70]) + " XP Total." +
     "<br/>" +
     numberWithCommas(Math.ceil(xp200PerDay)) + " XP/day." +
     "</p>");
