@@ -1,33 +1,6 @@
-a.navbar-brand {
-  display: contents;
-}
-.navbar-dark .navbar-brand {
-  color: #FFD700;
-}
-body{
-  padding-top: 70px;
-  margin-bottom: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.navbar-brand img {
-  height: 1.5em;
-}
-
 .card {
   font-size: 0.8em;
 }
-
 .rewardImage {
   height: 5em;
-}
-
-.avatar {
-  max-width: 30%;
-}
-
-.adContainer {
-  background-color: black;
-  margin-bottom: 20px;
-  padding: 5px 0 5px 0;
 }

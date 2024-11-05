@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,25 +29,25 @@
       gtag('config', 'G-CR6MYH3TPR');
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="js/xptable-min.js?v=remix"></script>
-    <script src="js/xp-min.js?v=remix"></script>
+    <script src="js/calc.min.js?v=remix2"></script>
+    <script src="js/xptable.min.js?v=remix2"></script>
+    <script src="js/xp.min.js?v=remix2"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
   </head>
-  <body>
+  <body class="mb-2 px-2 bg-white" style="padding-top: 70px;">
 
     <div id="top"></div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-light fixed-top">
-      <a class="navbar-brand" href="index.html"><img src="img/nav_logo_gold_remix.png" alt="FORTNITE XP: REMIX"></a>
+      <a class="navbar-brand" href="./">FORTNITE XP: REMIX</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup" data-toggle="collapse" data-target=".navbar-collapse">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link  " href="index.html">Daily Summary</a>
+        <div class="navbar-nav ml-2">
+          <a class="nav-item nav-link  " href="./">Daily Summary</a>
           <a class="nav-item nav-link  " href="daily.html">Leveling Pace</a>
           <a class="nav-item nav-link  " href="levels.html">XP Per Level</a>
           <a class="nav-item nav-link active " href="calculator.html">Calculator</a>
@@ -62,113 +62,141 @@
       <h1 class="titleBlock">Fortnite XP Calculator</h1>
 
       
-        <p>
-          Calculate how much XP you'll need daily to reach your target level. It will also tell you how many days early you'll finish (the number of days you can skip your grind).
-        </p>
-        <p>
-          Note that this doesn't have pre-defined daily values for character or season quests and challenges, since they are variable throughout the season.
-        </p>
         <form class="mb-4">
+      
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-4 col-md-1">
               <label for="inputCurrentLevel">Current Level:</label>
               <input type="number" class="form-control" id="inputCurrentLevel" value="1" onchange="calculate(this)">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-4 col-md-1 text-center">
+              <label>&nbsp;</label>
+              <div style="font-size: 1.5rem;">➔</div>
+            </div>
+            <div class="form-group col-4 col-md-1">
               <label for="inputTargetLevel">Target Level:</label>
               <input type="number" class="form-control" id="inputTargetLevel" value="70" onchange="calculate(this)">
             </div>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="checkChallengeXP" onchange="calculate(this)">
-            <label class="form-check-label" for="checkChallengeXP">
-              Complete Match Quest Daily Bonus Goals (3x 1,000 XP + 3x 15,000 XP)
-            </label>
-          </div>
-          <br />
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCreativeXP">Creative XP Earned Per Day:</label>
-              <input type="number" class="form-control" id="inputCreativeXP" value="0" onchange="calculate(this)">
+      
+          <p class="font-italic">
+            Calculate XP required daily to reach your target level. It will also tell you how many days early you'll finish (the number of days you can skip your grind).
+          </p>
+      
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkBRDailyXP" onchange="toggleInput(this, 'inputBRDailyXP'); calculate(this)">
+              <label class="form-check-label" for="checkBRDailyXP">
+                3x BR/Zero/Reload/TR Daily Quests (3x 1k + 3x 20k):
+              </label>
             </div>
+            <input type="number" class="form-control col-md-1" id="inputBRDailyXP" value="63000" onchange="calculate(this)" disabled>
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputSTWXP">Save The World XP Earned Per Day:</label>
-              <input type="number" class="form-control" id="inputSTWXP" value="0" onchange="calculate(this)">
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkFestivalDailyXP" onchange="toggleInput(this, 'inputFestivalDailyXP'); calculate(this)">
+              <label class="form-check-label" for="checkFestivalDailyXP">
+                3x Festival Daily Quests (12x 1k + 3x 20k):
+              </label>
             </div>
+            <input type="number" class="form-control col-md-1" id="inputFestivalDailyXP" value="72000" onchange="calculate(this)" disabled>
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputOtherXP">Other XP Earned Per Day:</label>
-              <input type="number" class="form-control" id="inputOtherXP" value="0" onchange="calculate(this)">
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkRacingDailyXP" onchange="toggleInput(this, 'inputRacingDailyXP'); calculate(this)">
+              <label class="form-check-label" for="checkRacingDailyXP">
+                3x Rocket Racing Daily Quests (3x 3k + 3x 20k):
+              </label>
             </div>
+            <input type="number" class="form-control col-md-1" id="inputRacingDailyXP" value="69000" onchange="calculate(this)" disabled>
           </div>
-          <div class="w-100 text-center">
-            <button type="button" class="btn btn-primary" onclick="javascript: calculate(this);">Calculate</button>
+      
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkBRXP" onchange="toggleInput(this, 'inputBRXP'); calculate(this)">
+              <label class="form-check-label" for="checkBRXP">
+                BR/Zero XP Capped @ 150min (24k/15min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputBRXP" value="240000" onchange="calculate(this)" disabled>
           </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkReloadXP" onchange="toggleInput(this, 'inputReloadXP'); calculate(this)">
+              <label class="form-check-label" for="checkReloadXP">
+                Reload XP Capped @ 150min (60k/15min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputReloadXP" value="600000" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkFestivalXP" onchange="toggleInput(this, 'inputFestivalXP'); calculate(this)">
+              <label class="form-check-label" for="checkFestivalXP">
+                Festival XP Capped @ 200min (4k/10min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputFestivalXP" value="80000" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkLegoXP" onchange="toggleInput(this, 'inputLegoXP'); calculate(this)">
+              <label class="form-check-label" for="checkLegoXP">
+                Lego XP Capped @ 150min (51k/10min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputLegoXP" value="765000" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkRacingXP" onchange="toggleInput(this, 'inputRacingXP'); calculate(this)">
+              <label class="form-check-label" for="checkRacingXP">
+                Rocket Racing XP Capped @ ?min (?/?min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputRacingXP" value="0" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkCreativeXP" onchange="toggleInput(this, 'inputCreativeXP'); calculate(this)">
+              <label class="form-check-label" for="checkCreativeXP">
+                Creative Map XP Capped @ ?min (?/?min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputCreativeXP" value="0" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkSTWXP" onchange="toggleInput(this, 'inputSTWXP'); calculate(this)">
+              <label class="form-check-label" for="checkSTWXP">
+                Save The World XP Capped @ ?min (?/?min):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputSTWXP" value="0" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkOtherXP" onchange="toggleInput(this, 'inputOtherXP'); calculate(this)">
+              <label class="form-check-label" for="checkOtherXP">
+                Other unspecified ingame or quest XP earned per day:
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputOtherXP" value="0" onchange="calculate(this)" disabled>
+          </div>
+      
         </form>
       
         <div id="results" class="card m-2 p-2 bg-dark text-light">
-          <span id="xpRemainingPerDay" class="text-warning font-weight-bold"></span> left to grind daily via:
-          <ul id="grindList">
-            <li>Season Quests</li>
-            <li>Character Quests</li>
-            <li>General Gameplay Rewards</li>
-          </ul>
-          <div class="mt-4" id="moredata"></div>
+          <span id="xpRemainingPerDay" class="text-warning font-weight-bold"></span>
+          <div class="mt-2" id="moredata"></div>
         </div>
         
-      <script>
-        function calculate(elem) {
-          var currentLevel = $("#inputCurrentLevel").val();
-          var currentXP = totalPerLevel[currentLevel];
-          var targetLevel = $("#inputTargetLevel").val();
-          var targetXP = totalPerLevel[targetLevel];
-          var xpNeeded = targetXP - currentXP;
-          var xpNeededPerDay = xpNeeded/daysRemaining;
-          var xpEarnedPerDay = 0;
-          if ($('#checkCreativeXP').is(":checked"))
-          {
-            xpEarnedPerDay += 60000;
-          }
-          if ($('#checkChallengeXP').is(":checked"))
-          {
-            xpEarnedPerDay += 48000;
-          }
-          var creativeXPPerDay = parseInt($("#inputCreativeXP").val(), 10) || 0;
-          var stwXPPerDay = parseInt($("#inputSTWXP").val(), 10) || 0;
-          var otherXPPerDay = parseInt($("#inputOtherXP").val(), 10) || 0;
-          xpEarnedPerDay += creativeXPPerDay + stwXPPerDay + otherXPPerDay;
+        <script>calculate();</script>
       
-          if (xpEarnedPerDay <= xpNeededPerDay)
-          {
-            var xpLeftPerDay = Math.ceil(xpNeededPerDay - xpEarnedPerDay);
-            $("#xpRemainingPerDay").html(numberWithCommas(xpLeftPerDay) + " XP");
-            $("grindList").show();
-          } else {
-            var daysToReach = Math.ceil(xpNeeded / xpEarnedPerDay);
-            $("#xpRemainingPerDay").html("You will finish " + Math.min(daysRemaining,(daysRemaining - daysToReach)) + " days early!");
-            $("grindList").hide();
-          }
-          
-      
-          var dataMessage = ""
-            + "<br/>" + daysRemaining + " days remaining in season"
-            + "<br/> You require " + numberWithCommas(Math.ceil(xpNeeded)) + " XP in total"
-            + "<br/> You will earn " + numberWithCommas(Math.ceil(xpEarnedPerDay * daysRemaining)) + " XP in total from the above"
-            + "<br/> You require " + numberWithCommas(Math.ceil(xpNeededPerDay)) + " XP/day"
-            + "<br/> You will earn " + numberWithCommas(Math.ceil(xpEarnedPerDay)) + " XP/day (counting today)"
-          ;
-          $("#moredata").html(dataMessage);
-        }
-        calculate();
-      </script>
-           
       
     </div>
 
-    <div class="adContainer">
+    <div class="adContainer bg-dark mb-4 mx-n2 px-2 py-2">
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8080880445104035"
         crossorigin="anonymous"></script>
       <!-- fortnite-banner-foot -->
