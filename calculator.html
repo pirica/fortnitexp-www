@@ -103,6 +103,15 @@
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
+              <input class="form-check-input" type="checkbox" value="" id="checkOGDailyXP" onchange="toggleInput(this, 'inputOGDailyXP'); calculate(this)">
+              <label class="form-check-label" for="checkOGDailyXP">
+                3x OG Daily Quests (3x 1k + 3x 20k):
+              </label>
+            </div>
+            <input type="number" class="form-control col-md-1" id="inputOGDailyXP" value="63000" onchange="calculate(this)" disabled>
+          </div>
+          <div class="form-row align-items-center mb-2">
+            <div class="form-check mr-2">
               <input class="form-check-input" type="checkbox" value="" id="checkFestivalDailyXP" onchange="toggleInput(this, 'inputFestivalDailyXP'); calculate(this)">
               <label class="form-check-label" for="checkFestivalDailyXP">
                 3x Festival Daily Quests (12x 1k + 3x 20k):
@@ -169,10 +178,10 @@
             <div class="form-check mr-2">
               <input class="form-check-input" type="checkbox" value="" id="checkSTWXP" onchange="toggleInput(this, 'inputSTWXP'); calculate(this)">
               <label class="form-check-label" for="checkSTWXP">
-                Save The World XP Capped @ 448,000:
+                Save The World XP Capped @ 357,000:
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputSTWXP" value="448000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputSTWXP" value="357000" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
