@@ -30,9 +30,9 @@
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="js/calc.min.js?v=ch6s1-2"></script>
-    <script src="js/xptable.min.js?v=ch6s1-2"></script>
-    <script src="js/xp.min.js?v=ch6s1-2"></script>
+    <script src="js/calc.min.js?v=ch6s1-3"></script>
+    <script src="js/xptable.min.js?v=ch6s1-3"></script>
+    <script src="js/xp.min.js?v=ch6s1-3"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
   </head>
@@ -88,103 +88,67 @@
       
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkBRDailyXP" onchange="toggleInput(this, 'inputBRDailyXP'); calculate(this)">
-              <label class="form-check-label" for="checkBRDailyXP">
-                3x Global Daily Quests (3x 20k):
+              <input class="form-check-input" type="checkbox" value="" id="checkGlobalDailyXP" onchange="toggleInput(this, 'inputGlobalDailyXP'); calculate(this)">
+              <label class="form-check-label" for="checkGlobalDailyXP">
+                3x Global Daily Goals (3x 1k + 3x 20k):
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputBRDailyXP" value="60000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputGlobalDailyXP" value="63000" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkReloadDailyXP" onchange="toggleInput(this, 'inputReloadDailyXP'); calculate(this)">
-              <label class="form-check-label" for="checkReloadDailyXP">
-                3x Reload Daily Quests (3x 1k + 3x 20k):
+              <input class="form-check-input" type="checkbox" value="" id="checkLegoDailyXP" onchange="toggleInput(this, 'inputLegoDailyXP'); calculate(this)">
+              <label class="form-check-label" for="checkLegoDailyXP">
+                6x LEGO Daily Quests (12x 3k + 6x 5k):
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputReloadDailyXP" value="63000" onchange="calculate(this)" disabled>
-          </div>
-          <div class="form-row align-items-center mb-2">
-            <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkOGDailyXP" onchange="toggleInput(this, 'inputOGDailyXP'); calculate(this)">
-              <label class="form-check-label" for="checkOGDailyXP">
-                3x OG Daily Quests (3x 1k + 3x 20k):
-              </label>
-            </div>
-            <input type="number" class="form-control col-md-1" id="inputOGDailyXP" value="63000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputLegoDailyXP" value="66000" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
               <input class="form-check-input" type="checkbox" value="" id="checkFestivalDailyXP" onchange="toggleInput(this, 'inputFestivalDailyXP'); calculate(this)">
               <label class="form-check-label" for="checkFestivalDailyXP">
-                3x Festival Daily Quests (12x 1k + 3x 2k):
+                12x Festival Daily Quests (12x 1k + 3x 2k):
               </label>
             </div>
             <input type="number" class="form-control col-md-1" id="inputFestivalDailyXP" value="18000" onchange="calculate(this)" disabled>
           </div>
-          <div class="form-row align-items-center mb-2">
-            <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkRacingDailyXP" onchange="toggleInput(this, 'inputRacingDailyXP'); calculate(this)">
-              <label class="form-check-label" for="checkRacingDailyXP">
-                3x Rocket Racing Daily Quests (3x 3k + 3x 20k):
-              </label>
-            </div>
-            <input type="number" class="form-control col-md-1" id="inputRacingDailyXP" value="69000" onchange="calculate(this)" disabled>
-          </div>
       
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkBRXP" onchange="toggleInput(this, 'inputBRXP'); calculate(this)">
-              <label class="form-check-label" for="checkBRXP">
-                BR/Zero XP (0/min):
+              <input class="form-check-input" type="checkbox" value="" id="checkOGXP" onchange="toggleInput(this, 'inputOGXP'); calculate(this)">
+              <label class="form-check-label" for="checkOGXP">
+                Lego/Reload/OG Playtime XP @ 1900/min:
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputBRXP" value="0" onchange="calculate(this)" disabled>
-          </div>
-          <div class="form-row align-items-center mb-2">
-            <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkReloadXP" onchange="toggleInput(this, 'inputReloadXP'); calculate(this)">
-              <label class="form-check-label" for="checkReloadXP">
-                Reload XP Capped @ 150min (60k/15min):
-              </label>
-            </div>
-            <input type="number" class="form-control col-md-1" id="inputReloadXP" value="600000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputOGXP" value="0" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
               <input class="form-check-input" type="checkbox" value="" id="checkFestivalXP" onchange="toggleInput(this, 'inputFestivalXP'); calculate(this)">
               <label class="form-check-label" for="checkFestivalXP">
-                Festival XP Capped @ 180min (4k/10min):
+                Max Daily Festival Playtime XP @ 100,000 (5k/15min):
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputFestivalXP" value="80000" onchange="calculate(this)" disabled>
-          </div>
-          <div class="form-row align-items-center mb-2">
-            <div class="form-check mr-2">
-              <input class="form-check-input" type="checkbox" value="" id="checkLegoXP" onchange="toggleInput(this, 'inputLegoXP'); calculate(this)">
-              <label class="form-check-label" for="checkLegoXP">
-                Lego XP Capped @ 300min (1900/min):
-              </label>
-            </div>
-            <input type="number" class="form-control col-md-1" id="inputLegoXP" value="570000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputFestivalXP" value="100000" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
               <input class="form-check-input" type="checkbox" value="" id="checkCreativeXP" onchange="toggleInput(this, 'inputCreativeXP'); calculate(this)">
               <label class="form-check-label" for="checkCreativeXP">
-                Creative Map XP Capped @ 560,000:
+                Max Creative XP @ 4,000,000:
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputCreativeXP" value="560000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputCreativeXP" value="4000000" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
               <input class="form-check-input" type="checkbox" value="" id="checkSTWXP" onchange="toggleInput(this, 'inputSTWXP'); calculate(this)">
               <label class="form-check-label" for="checkSTWXP">
-                Save The World XP Capped @ 448,000:
+                Daily Save The World XP Capped @ 4,000,000:
               </label>
             </div>
-            <input type="number" class="form-control col-md-1" id="inputSTWXP" value="448000" onchange="calculate(this)" disabled>
+            <input type="number" class="form-control col-md-1" id="inputSTWXP" value="4000000" onchange="calculate(this)" disabled>
           </div>
           <div class="form-row align-items-center mb-2">
             <div class="form-check mr-2">
